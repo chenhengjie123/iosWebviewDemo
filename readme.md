@@ -13,6 +13,8 @@
 时间关系，也把结论在这里同步下：
 
 使用 UIWebView 组件，不会新建进程，内存数值还会被包含在 app 进程中
-使用 WKWebView 组件，会新建进程，内存数值不会被包含在 app 进程中
+使用 WKWebView 组件，会新建外部独立进程(com.apple.WebKit.Networking和com.apple.WebKit.WebContent)，独立进程的内存数值不会被包含在 app 进程中
+
+xcode的debug模式，只会获取app进程的内存数据，不会包含WKWebView新建的进程的数据。如果要获取这部分数据，只能通过 instruments 的 activity 模板来获取。
 
 关于 WKWebView 组件进程模型的详细信息，建议查看：https://segmentfault.com/a/1190000040652799
